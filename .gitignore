@@ -1,6 +1,14 @@
 #Source files
 *.jsp
+*.java
+*.jar
 *.html
 *.css
 *.sql
 *.xml
+
+#config files
+*.DS_STORE
+*.MF
+*.properties
+*.war
