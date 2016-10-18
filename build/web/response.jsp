@@ -32,7 +32,7 @@
     <body>
         <table>
             <tr>
-                <th colspan="2">${comp3732_employeesDetails.firstName}${comp3732_employeesMegaDetails.name}</th>
+                <th colspan="2">${comp3732_employeesDetails.firstName}${comp3732_employeesMegaDetails.firstName}</th>
             </tr>
             <tr>
                 <td><strong>Role: </strong></td>
