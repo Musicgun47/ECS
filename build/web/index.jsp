@@ -34,7 +34,7 @@ SELECT dept_id, deptName FROM comp3732_departments;
             <option value="${row.dept_id}">${row.deptName}</option>
         </c:forEach>
          <c:forEach var="row" items="${comp3732_employees_mega.rows}">
-            <option value="${row.dept_id}">${row.id_name}</option>
+            <option value="${row.dept_id}">${row.deptName}</option>
         </c:forEach>
     <input type="submit" value="submit" name="submit" />
 </form>
