@@ -7,15 +7,15 @@
 --%>
 <sql:query var="departments" dataSource="jdbc/generico">
     SELECT deptName FROM comp3732_departments
-    WHERE dept_id = <sql:param value="${param.dept_id}"/>
+    WHERE dept_id = ? <sql:param value="${param.dept_id}"/>
 </sql:query>
 <sql:query var="departments_mega" dataSource="jdbc/megacorp">
     SELECT deptName FROM comp3732_departments_mega
-    WHERE dept_id = <sql:param value="${param.dept_id}"/>
+    WHERE dept_id = ? <sql:param value="${param.dept_id}"/>
 </sql:query>
 <sql:query var="comp3732_employees" dataSource="jdbc/generico">
     SELECT * FROM comp3732_departments, comp3732_employees 
-    WHERE comp3732_employees.department = comp3732_departments.dept_id 
+    WHERE comp3732_employees.department = comp3732_departments.dept_id
     AND comp3732_departments.dept_id = ? <sql:param value="${param.dept_id}"/>
 </sql:query>
 <sql:query var="comp3732_employees_mega" dataSource="jdbc/megacorp">
@@ -38,25 +38,31 @@
     </head>
 
     <body>
-        <h1>${department.deptName}</h1>
+        <h1>${dept.deptName}</h1>
         <table>
             <tr>
                 <th colspan="2">Name</th>
                 <th>Role</th>
             </tr>
             <c:forEach var="row" items="${comp3732_employees.rows}">
-                <tr>
-                    <td><strong>${row.firstName}</strong></td>
-                    <td><strong>${row.lastName}</strong></td>
-                    <td><strong>${row.workRole}</strong></td>
-                </tr>
-            <c:forEach/>
+                <c:if test="${row.deptName == dept.deptName}">
+                    <tr>
+                        <td><strong>${row.firstName}</strong></td>
+                        <td><strong>${row.lastName}</strong></td>
+                        <td><strong>${row.workRole}</strong></td>
+                    </tr>
+                </c:if>
+            </c:forEach>
             <c:forEach var="row" items="${comp3732_employees_mega.rows}">
-                <tr>
-                    <td><strong>${row.firstName}</strong></td>
-                    <td><strong>${row.lastName}</strong></td>
-                    <td><strong>${row.positionName}</strong></td>
-                </tr>
+                <c:choose>
+                    <c:when test="${row.deptName == dept_mega.deptName}">
+                        <tr>
+                            <td><strong>${row.firstName}</strong></td>
+                            <td><strong>${row.lastName}</strong></td>
+                            <td><strong>${row.positionName}</strong></td>
+                        </tr>
+                    </c:when>
+                </c:choose>
             </c:forEach>
         </table>
     </body>
