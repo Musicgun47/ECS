@@ -12,3 +12,5 @@
 *.MF
 *.properties
 *.war
+!/src/java/handlers/DepartmentHandle.java
+!/src/java/utilities/Departments.java
