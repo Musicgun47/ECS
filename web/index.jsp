@@ -27,14 +27,12 @@ SELECT dept_id, deptName FROM comp3732_departments;
     <body>
         <h1>Display Employees in Generico</h1>
         <p>
+<jsp:useBean id="departments" class="utilities.Departments"/>
 <form action="response.jsp">
     <strong>Select a Department:</strong>
-    <select name="dept">
-       <c:forEach var="row" items="${comp3732_departments.rows}">
-            <option value="${row}">${row.deptName}</option>
-        </c:forEach>
-         <c:forEach var="row" items="${comp3732_employees_mega.rows}">
-            <option value="${row}">${row.deptName}</option>
+    <select name="depts">
+        <c:forEach var="dept" items="${departments.departments}" varStatus="loop">
+            <option value="${loop.index}">${dept}</option>
         </c:forEach>
     <input type="submit" value="submit" name="submit" />
 </form>
