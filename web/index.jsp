@@ -29,12 +29,12 @@ SELECT dept_id, deptName FROM comp3732_departments;
         <p>
 <form action="response.jsp">
     <strong>Select a Department:</strong>
-    <select name="dept_id">
+    <select name="dept">
        <c:forEach var="row" items="${comp3732_departments.rows}">
-            <option value="${row.dept_id}">${row.deptName}</option>
+            <option value="${row}">${row.deptName}</option>
         </c:forEach>
          <c:forEach var="row" items="${comp3732_employees_mega.rows}">
-            <option value="${row.dept_id}">${row.deptName}</option>
+            <option value="${row}">${row.deptName}</option>
         </c:forEach>
     <input type="submit" value="submit" name="submit" />
 </form>
