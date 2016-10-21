@@ -11,7 +11,7 @@ package handlers;
  */
 public class DepartmentHandle {
     
-    public static String[] departments = {"Management", "Human Resources", "Finance", "Development & Design",
+    public static String[] departments = {"Management", "Human Resources", "Finance", "Development", "Design",
     "Sales", "Marketing", "Shipping", "Product Development", "Supply Chain", "IT"};
     private int index;
     private int dept_id_generico;
@@ -35,16 +35,17 @@ public class DepartmentHandle {
     
     public static int[] getID(int index){
         switch(index){
-            case 0: return new int[]{1, 0};
-            case 1: return new int[]{2, 1};
-            case 2: return new int[]{3, 0};
-            case 3: return new int[]{4, 0};
-            case 4: return new int[]{6, 3};
-            case 5: return new int[]{7, 4};
-            case 6: return new int[]{8, 0};
-            case 7: return new int[]{0, 2};
-            case 8: return new int[]{0, 5};
-            case 9: return new int[]{0, 6};
+            case 0:  return new int[]{1, 0};
+            case 1:  return new int[]{2, 1};
+            case 2:  return new int[]{3, 0};
+            case 3:  return new int[]{4, 0};
+            case 4:  return new int[]{5, 0};
+            case 5:  return new int[]{6, 3};
+            case 6:  return new int[]{7, 4};
+            case 7:  return new int[]{8, 0};
+            case 8:  return new int[]{0, 2};
+            case 9:  return new int[]{0, 5};
+            case 10: return new int[]{0, 6};
             default:return new int[]{0, 0};
         }
     }
