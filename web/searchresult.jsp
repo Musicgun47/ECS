@@ -8,7 +8,7 @@
 --%>
 
 <jsp:useBean id="search" class="utilities.SearchTerm"/>
-<jsp:setProperty name="search" property="searchTerm" />
+<jsp:setProperty name="search" property="searchTerm" value="${param.search}"/>
 <c:set var="searchTerm" value="${search.searchTerm}"/>
 <sql:query var="matches_generico" dataSource="jdbc/generico">
     SELECT firstName, lastName, workRole, deptName
