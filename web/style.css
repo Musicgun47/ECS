@@ -1,49 +1,59 @@
 /* 
     Document   : style
-    Created on : Aug 12, 2012, 11:23:48 AM
-    Author     : Romana
-    Description: ECS Assignment
+    Created : October 2016
+    Author     : Nicholas Bennier
+    Description: ECS Assignment 3
 */
+
+html {
+    background-color: #f8f8f8;
+}
 
 body {
     font-family: Verdana, Arial, sans-serif;
     font-size: smaller;
     padding: 50px;
-    color: #555;
+    color: #000000;
+    border: 1px solid #e0e0e0;
 }
 
 h1 {
-    text-align: left;
-    letter-spacing: 6px;
-    font-size: 1.4em;
-    color: #be7429;
+    text-align: center;
+    letter-spacing: 4px;
+    font-size: 2.0em;
+    color: #000000;
     font-weight: normal;
-    width: 450px;
+    width: 600px;
 }
 
 table {
     width: 580px;
     padding: 10px;
-    background-color: #c5e7e0;
+    background-color: #e5e5e5;
+    border: 1px solid #5050e0;
+    border-top-width: 2px;
 }
 
 th {
     text-align: left;
     border-bottom: 1px solid;
+    border-color: #5050e0;
+    font-size: 1.3em;
+    letter-spacing: 1px;
 }
 
 td {
-    padding: 10px;
+    padding: 11px;
 }
 
 a:link {
-   color: #be7429;
+   color: #000000;
    font-weight: normal;
    text-decoration: none;
 }
 
 a:link:hover {
-   color: #be7429;
+   color: #000000;
    font-weight: normal;
    text-decoration: underline;
 }
