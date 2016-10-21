@@ -27,7 +27,7 @@ SELECT dept_id, deptName FROM comp3732_departments;
     <body>
         <h1>Display Employees in Generico</h1>
         <p>
-        <jsp:useBean id="departments" class="utilities.Departments"/>
+        <jsp:useBean id="departments" class="handlers.DepartmentHandle"/>
         <form action="response.jsp">
             <strong>Select a Department:</strong>
             <select name="depts">
