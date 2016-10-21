@@ -7,7 +7,7 @@
 --%>
 
 <jsp:useBean id="department" class="handlers.DepartmentHandle"/>
-<jsp:setProperty name="department" property="index" value="${param.loop.index}" />
+<jsp:setProperty name="department" property="index" value="${param.depts}" />
 <c:set var="dept_id_generico" value="${department.dept_id_generico}"/>
 <c:set var="dept_id_mega" value="${department.dept_id_mega}"/>
 <sql:query var="comp3732_employees" dataSource="jdbc/generico">
