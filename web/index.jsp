@@ -27,15 +27,22 @@ SELECT dept_id, deptName FROM comp3732_departments;
     <body>
         <h1>Display Employees in Generico</h1>
         <p>
-<jsp:useBean id="departments" class="utilities.Departments"/>
-<form action="response.jsp">
-    <strong>Select a Department:</strong>
-    <select name="depts">
-        <c:forEach var="dept" items="${departments.departments}" varStatus="loop">
-            <option value="${loop.index}">${dept}</option>
-        </c:forEach>
-    <input type="submit" value="submit" name="submit" />
-</form>
+        <jsp:useBean id="departments" class="utilities.Departments"/>
+        <form action="response.jsp">
+            <strong>Select a Department:</strong>
+            <select name="depts">
+                <c:forEach var="dept" items="${departments.departments}" varStatus="loop">
+                    <option value="${loop.index}">${dept}</option>
+                </c:forEach>
+            <input type="submit" value="Submit" name="submit" />
+        </form>
+        </p>
+        <p>
+        <form action="searchresult.jsp">
+            <strong>Search Employees:</strong>
+            <input type="text" name="search"/>
+            <input type="submit" value="Search" name="submit"/>
+        </form>
         </p>
     </body>
 </html>
