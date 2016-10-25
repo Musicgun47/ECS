@@ -11,17 +11,31 @@ package handlers;
  */
 public class SearchTerm {
     
-    private String searchTerm;
+    private String firstName;
+    private String lastName;
     
     public SearchTerm(){
-        searchTerm = "";
+        firstName = "";
+        lastName = "";
     }
 
-    public String getSearchTerm() {
-        return searchTerm;
+    public String getFirstName() {
+        return firstName;
+    }
+    
+    public String getLastName() {
+        return lastName;
     }
 
     public void setSearchTerm(String searchTerm) {
-        this.searchTerm = searchTerm;
+        if(searchTerm.contains(" ")){
+            String[] names = searchTerm.split(" ");
+            firstName = "%" + names[0] + "%";
+            lastName = "%" + names[1] + "%";
+        }
+        else{
+            firstName = "%" + searchTerm + "%";
+            lastName = "%" + searchTerm + "%";
+        }
     }
 }

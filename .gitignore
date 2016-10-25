@@ -14,3 +14,5 @@
 *.war
 !/src/java/handlers/DepartmentHandle.java
 !/src/java/utilities/Departments.java
+!/web/searchresult.jsp
+!/src/java/handlers/SearchTerm.java
