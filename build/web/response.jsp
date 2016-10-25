@@ -6,19 +6,21 @@
     Author     : your name
 --%>
 
+<jsp:useBean id="department" class="handlers.DepartmentHandle"/>
+<jsp:setProperty name="department" property="index" value="${param.depts}" />
+<c:set var="dept_id_generico" value="${department.dept_id_generico}"/>
+<c:set var="dept_id_mega" value="${department.dept_id_mega}"/>
 <sql:query var="comp3732_employees" dataSource="jdbc/generico">
     SELECT * FROM comp3732_departments, comp3732_employees 
-    WHERE comp3732_employees.department = comp3732_departments.dept_id 
-    AND comp3732_departments.dept_id = ? <sql:param value="${param.dept_id}"/>
+    WHERE comp3732_employees.department = comp3732_departments.dept_id
+    AND comp3732_departments.dept_id = ? <sql:param value="${dept_id_generico}"/>
 </sql:query>
 <sql:query var="comp3732_employees_mega" dataSource="jdbc/megacorp">
- SELECT * FROM comp3732_departments_mega, comp3732_employees_mega 
-    WHERE comp3732_employees_mega.dept_id = comp3732_departments_mega.dept_id 
-    AND comp3732_departments_mega.dept_id = ? <sql:param value="${param.dept_id}"/>
+ SELECT * FROM comp3732_departments_mega, comp3732_employees_mega, comp3732_positions_mega
+    WHERE comp3732_employees_mega.dept_id = comp3732_departments_mega.dept_id
+    AND comp3732_employees_mega.role_id = comp3732_positions_mega.pos_id
+    AND comp3732_departments_mega.dept_id = ? <sql:param value="${dept_id_mega}"/>
 </sql:query>
-
-<c:set var="comp3732_employeesDetails" value="${comp3732_employees.rows[0]}"/>
-<c:set var="comp3732_employeesMegaDetails" value="${comp3732_employees_mega.rows[0]}"/>   
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -30,15 +32,26 @@
     </head>
 
     <body>
+        <h1><jsp:getProperty name="department" property="dept" /></h1>
         <table>
             <tr>
-                <th colspan="2">${comp3732_employeesDetails.firstName}${comp3732_employeesMegaDetails.firstName}</th>
+                <th colspan="2">Name</th>
+                <th>Role</th>
             </tr>
-            <tr>
-                <td><strong>Role: </strong></td>
-                <td><strong>${comp3732_employeesDetails.workRole}${comp3732_employeesMegaDetails.workRole}</strong></td>
-            </tr>
-         
+            <c:forEach var="row" items="${comp3732_employees.rows}">
+                <tr>
+                    <td><strong>${row.firstName}</strong></td>
+                    <td><strong>${row.lastName}</strong></td>
+                    <td><strong>${row.workRole}</strong></td>
+                </tr>
+            </c:forEach>
+            <c:forEach var="row" items="${comp3732_employees_mega.rows}">
+                <tr>
+                    <td><strong>${row.firstName}</strong></td>
+                    <td><strong>${row.lastName}</strong></td>
+                    <td><strong>${row.positionName}</strong></td>
+                </tr>
+            </c:forEach>
         </table>
     </body>
 </html>
